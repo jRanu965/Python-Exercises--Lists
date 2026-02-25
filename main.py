@@ -9,6 +9,17 @@ def shift_string(message, shift_value):
 #    If the character is a letter (A-Z or a-z):
         if char.isalpha():
 #        Shift the letter by adding the shift value to its ASCII code (use the ord function)
+            if char.isupper():
+                shifted_char = (ord(char) - ord('A') + shift_value) % 26 + ord('A')
+            else:
+                shifted_char = (ord(char) - ord('a') + shift_value) % 26 + ord('a')
+#        Convert the new ASCII code back to a character (use the chr function)
+            shifted_message.append(chr(shifted_char))
+        else:
+#    If the character is not a letter:
+            shifted_message.append(char)
+# After the loop, join the list into a string and return it  
+    return ''.join(shifted_message)
 #        Convert the new ASCII code back to a character (use the chr function)
 #        Add the shifted character to the list
 #    If the character is not a letter:
